@@ -3,5 +3,6 @@
 
 int Lenght(char* g);
 
+extern char endln;
 
 #endif
