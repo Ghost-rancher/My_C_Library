@@ -4,73 +4,180 @@
 #include "my_stdio.h"
 #include "my_string.h"
 
+#pragma region NumberToChar
+
+char NumberToChar(int deger)
+{
+	if(deger < 0 || deger > 9)
+	{
+		printf("Bir sayi girin.");
+	}
+	else
+	{
+		char i = 48;
+		int y = 0;
+		while(i != 58)
+		{
+			if(deger == y)
+			{
+				return i;
+			}
+			y++;
+			i++;
+		}
+		return 0;
+	}
+}
+
+#pragma endregion
+
+#pragma region CharToNumber
+
+int CharToNumber(char deger)
+{
+	if(deger < 47 && deger > 57)
+	{
+		printf("Bir char girin.");
+	}
+	else
+	{
+		char i = 48;
+		int y = 0;
+		while(i != 58)
+		{
+			if(deger == i)
+			{
+				return y;
+			}
+			y++;
+			i++;
+		}
+		return 0;
+	}
+}
+
+#pragma endregion
+
+#pragma region Get_Char
+
+char Get_Char()
+{
+	char r;
+	read(0, &r, 1);
+	//fflush(stdin); 
+	return r;
+}
+
+#pragma endregion
+
+#pragma region Put_Char
+
+void Put_Char(char t)
+{
+	write(0, &t, 1);
+}
+
+#pragma endregion
+
+#pragma region FGets
+
+int FGets(char *test, int len)
+{
+	char c;
+	int y = 0;
+	while ((c = Get_Char()) != '\n' && y != len)
+	{
+		test[y] = c;
+		y++;
+	}
+
+	test[y] = '\0';
+
+	return 1;
+}
+
+#pragma endregion
+
+#pragma region Puts
+
+void Puts(char* test)
+{
+	int len = Length(test);
+	write(0, test, len);
+}
+
+#pragma endregion
+
+#pragma region Scanf
+
 int Scanf(int mod,void *deger, int leng)
 {
 	if(mod == 1)
 	{
-		int i = 0;
-		char test[leng];
-		char read_;
-		while(read_ != '\n')
-		{
-			read(0, &read_, 1);
-			if(read_ != '\n')
-			{
-				test[i] = read_;
-				i++;
-			}
-		}
-		test[i] = '\0';
-		int h = 0;
-		while(h != i)
-		{
-			((char *)deger)[h] = test[h];
-			h++;
-		}
-		((char *)deger)[i] = '\0';
+		FGets((char *)deger, leng);
+
 	}
 	else if(mod == 2)
 	{
-		int i = 0;
-		char test[leng];
-		char read_;
-		while(read_ != '\n')
-		{
-			read(0, &read_, 1);
-			if(read_ != '\n')
-			{
-				test[i] = read_;
-				i++;
-			}
-		}
-		int d = 0;
-		char f = 48;
-		int len = Lenght(test);
-		while(d < len)
-		{
-			f = 48;
-			while(f != 58)
-			{
-				if(test[d] == f)
-				{
-					break;
-				}
-				if(f == 57)
-				{
-					printf("hata");
-					exit(0);
-				}
-				f++;
-			}
-			d++;
-		}
-		*(int*)deger = atoi(test);
-		((char *)deger)[i] = '\0';
-	}
-	else
-	{
-		printf("Hatali mod");
-		exit(0);
+		FGets((char *)deger, leng);
+		int *ptr = (int *)deger;
+		*ptr = atoi((char *)deger);
 	}
 	return -1;
 }
+
+#pragma endregion
+
+#pragma region Printf
+
+int Printf(int mod,void *deger)
+{
+	if (mod == 1)
+	{
+		char *chararray = (char*)deger;
+		Puts(chararray);
+	}
+	else if (mod == 2)
+	{
+		int *dh = (int*)deger;
+		char array[1024];
+		int g = 0;
+		int dg = *dh;
+		while(dg > 0)
+		{
+			int rakam = dg % 10;
+			array[g] = NumberToChar(rakam);
+			dg /= 10;
+			g++;
+		}
+		int len = Length(array);
+		while(len > -1)
+		{
+			Put_Char(array[len]);
+			len--;
+		}
+	}
+	else if (mod == 3)
+	{
+		char char_ = *(char*)deger;
+		Put_Char(char_);
+	}
+}
+
+#pragma endregion
+
+#pragma region tamalanicaklar_bazi_fonksiyonlar
+
+/*int CharArrayToInt(char* test)
+{
+	int len = Length(test);
+	int f;
+	while(len > 0)
+	{
+		int deg = CharToNumber(test[len]);
+		len--;
+	}
+	return;
+}*/
+
+#pragma endregion
