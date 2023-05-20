@@ -5,7 +5,7 @@ char NumberToChar(int deger);
 
 int CharToNumber(char deger);
 
-char Get_Char();
+char Get_Char(int deg);
 
 void Put_Char(char t);
 
