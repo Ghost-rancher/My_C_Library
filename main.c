@@ -21,7 +21,7 @@ int main(void)
     */
     /*
     #pragma region Get_Char
-    char ch = Get_Char();
+    char ch = Get_Char(0);
     Printf(3, &ch);
     #pragma endregion
     */
