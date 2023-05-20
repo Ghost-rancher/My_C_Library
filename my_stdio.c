@@ -60,10 +60,15 @@ int CharToNumber(char deger)
 
 #pragma region Get_Char
 
-char Get_Char()
+char Get_Char(int deg)
 {
 	char r;
 	read(0, &r, 1);
+	if(deg == 0)
+	{
+		char c;
+		while (read(0, &c, 1) > 0 && c != '\n');
+	}
 	//fflush(stdin); 
 	return r;
 }
@@ -85,7 +90,7 @@ int FGets(char *test, int len)
 {
 	char c;
 	int y = 0;
-	while ((c = Get_Char()) != '\n' && y != len)
+	while ((c = Get_Char(1)) != '\n' && y != len)
 	{
 		test[y] = c;
 		y++;
@@ -102,7 +107,7 @@ int FGets(char *test, int len)
 
 void Puts(char* test)
 {
-	int len = Length(test);
+	int len = Lenght(test);
 	write(0, test, len);
 }
 
@@ -150,7 +155,7 @@ int Printf(int mod,void *deger)
 			dg /= 10;
 			g++;
 		}
-		int len = Length(array);
+		int len = Lenght(array);
 		while(len > -1)
 		{
 			Put_Char(array[len]);
