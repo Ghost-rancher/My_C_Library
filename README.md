@@ -1,5 +1,3 @@
-"Yeni hesabıma taşıdım artık bu hesabı kullanmıyorum."
-
 Uyarı main.c adlı dosyadaki /* */ arasına kapatılmış kodları tek tek çalıştırarak deneyin.
 
 Derlemek için;
